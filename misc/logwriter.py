@@ -14,3 +14,6 @@ class LogWriter(QObject):
         timestamp = datetime.now()
         with open(self.fname, 'a', encoding='utf8') as f:
             f.write(f"""{timestamp} ==> {message}\n<===\n""")
+
+
+flog = LogWriter()
