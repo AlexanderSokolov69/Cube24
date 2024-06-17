@@ -32,7 +32,7 @@ class FormLoginWindow(QDialog, Ui_LoginDialog):
         data = {'login': self.login.text().strip(), 'password': self.password.text().strip()}
         response = {}
         try:
-            response = post('http://localhost:5050/api/login', json=data, timeout=5).json()
+            response = post(f'http://{const.srv_addr}:{const.srv_port}/api/login', json=data, timeout=5).json()
             self.token = response.get('token', None)
         except Exception:
             msg_window(text='Соединение с сервером не удалось!')
