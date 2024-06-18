@@ -10,6 +10,7 @@ from Forms.login_window import FormLoginWindow
 from Forms.main_Form import Ui_MainWindow
 from Forms.test import Ui_Form
 from Forms.test_window import TestForm
+from Forms.users_window import UsersForm
 from misc.const import const
 
 
@@ -29,8 +30,12 @@ class FormMain(QMainWindow, Ui_MainWindow):
         self.test_wind2 = TestForm()
         self.test_wind2.setObjectName('TEST2')
 
+        self.test_wind3 = UsersForm()
+        self.test_wind3.setObjectName('TEST3')
+
         self.action_dict.triggered.connect(lambda x: self.mdi_append_window(self.test_wind))
         self.action.triggered.connect(lambda x: self.mdi_append_window(self.test_wind2))
+        self.action.triggered.connect(lambda x: self.mdi_append_window(self.test_wind3))
 
     def login_user(self):
         if not self.win.user:
@@ -46,6 +51,7 @@ class FormMain(QMainWindow, Ui_MainWindow):
                 print(self.win.user)
                 self.login.setText(self.win.user.get('login', 'login'))
                 self.user_name.setText(self.win.user.get('name', 'UserName'))
+                self.role.setText(self.win.user.get('role_name', 'User'))
                 self.current_year.setValue(self.win.current_year)
         return super().event(event)
 

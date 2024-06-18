@@ -5,7 +5,7 @@ from requests import get, post, put, delete
 # pprint(get('http://localhost:5050/api/v2/user/15').json())
 
 data = {'login': 'mmm', 'password': 'MMM'}
-response = post('http://172.16.1.56:5077/api/login', json=data).json()
+response = post('http://85.93.48.241:5077/api/login', json=data).json()
 print(response)
 token = response.get('token', None)
 pprint(token)
@@ -27,5 +27,5 @@ pprint(token)
 #         }
 data = {'id': 1048}
 headers = {'Authorization': 'Bearer ' + token}
-response = delete('http://172.16.1.56:5077/api/login', headers=headers, json=data).json()
+response = get('http://85.93.48.241:5077/api/info/user_groups', headers=headers, json=data).json()
 print(response)
