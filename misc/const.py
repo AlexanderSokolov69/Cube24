@@ -14,6 +14,7 @@ class Const:
             self.srv_addr = cfg.get("Server", "srv_addr")
             self.srv_port = cfg.get("Server", "srv_port")
             self.jwt_key = cfg.get("Server", "jwt_key")
+            self.timeout_req = cfg.get("Server", "timeout_req")
 
             self.splash = cfg.get('Settings', 'splash')
         except Exception:

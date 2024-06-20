@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QApplication, QSplashScreen
 from PyQt5.Qt import Qt
 
 from Forms.main_window import FormMain
+from api.api import NetApiConnect
 from misc.const import const
 from misc.functions import except_hook
 from misc.logwriter import LogWriter, flog

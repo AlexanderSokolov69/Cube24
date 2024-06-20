@@ -8,7 +8,7 @@ data = {'login': 'mmm', 'password': 'MMM'}
 response = post('http://85.93.48.241:5077/api/login', json=data).json()
 print(response)
 token = response.get('token', None)
-pprint(token)
+# pprint(token)
 
 # data = {'idUsers': 512}
 # headers = {'Authorization': 'Bearer ' + token}
@@ -25,7 +25,7 @@ pprint(token)
 #         'idPlaces': 0,
 #         'id': 1050
 #         }
-data = {'id': 1048}
+data = {'table': 'Groups'}
 headers = {'Authorization': 'Bearer ' + token}
-response = get('http://85.93.48.241:5077/api/info/user_groups', headers=headers, json=data).json()
-print(response)
+response = post('http://85.93.48.241:5077/api/info/dict_by_name', headers=headers, json=data).json()
+pprint(response)

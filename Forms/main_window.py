@@ -11,6 +11,7 @@ from Forms.main_Form import Ui_MainWindow
 from Forms.test import Ui_Form
 from Forms.test_window import TestForm
 from Forms.users_window import UsersForm
+from api.api import net_api
 from misc.const import const
 
 
@@ -38,21 +39,21 @@ class FormMain(QMainWindow, Ui_MainWindow):
         self.action.triggered.connect(lambda x: self.mdi_append_window(self.test_wind3))
 
     def login_user(self):
-        if not self.win.user:
+        if not net_api.user:
             self.win.show()
 
     def event(self, event: typing.Optional[QtCore.QEvent]) -> bool:
         if event.type() == QEvent.WindowActivate:
-            if not self.win.user:
+            if not net_api.user:
                 # print('User пустой')
                 self.win.show()
                 # print('Окно login активно!')
             else:
-                print(self.win.user)
-                self.login.setText(self.win.user.get('login', 'login'))
-                self.user_name.setText(self.win.user.get('name', 'UserName'))
-                self.role.setText(self.win.user.get('role_name', 'User'))
-                self.current_year.setValue(self.win.current_year)
+                # print(self.win.user)
+                self.login.setText(net_api.user.get('login', 'login'))
+                self.user_name.setText(net_api.user.get('name', 'UserName'))
+                self.role.setText(net_api.user.get('role_name', 'User'))
+                self.current_year.setValue(net_api.current_year)
         return super().event(event)
 
     def mdi_append_window(self, win_obj: QWidget):
